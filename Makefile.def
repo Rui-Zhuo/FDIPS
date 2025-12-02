@@ -1,0 +1,23 @@
+# Edited by Rui, 2025/11/29
+ROOTDIR   = $(PWD)
+BINDIR    = $(ROOTDIR)/bin
+SHAREDIR  = $(ROOTDIR)/share
+SCRIPTDIR = $(SHAREDIR)/Scripts
+SRCDIR    = $(ROOTDIR)/src
+LIBDIR    = $(ROOTDIR)/lib
+
+FC1       = gfortran
+F90_1     = gfortran
+FC        = mpif90
+F90       = mpif90
+LINK.f90  = $(FC)
+
+FFLAGS    = -O2 -ffree-form -ffree-line-length-none -fPIC
+F90FLAGS  = $(FFLAGS)
+LFLAGS    = -lm
+LFLAGS_MPI= -lm -lmpi
+
+INCDIR    = -I$(SRCDIR) -I$(SHAREDIR)/Library/src
+LIBS      = -L$(LIBDIR) $(LFLAGS)
+
+$(shell mkdir -p $(BINDIR) $(LIBDIR) $(SCRIPTDIR))
